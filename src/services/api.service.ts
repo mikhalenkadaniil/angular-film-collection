@@ -1,14 +1,27 @@
-import { Injectable, resource } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { environments } from '../environments/environments';
-import { isFilms } from '../model/films';
+import { Films, isFilms } from '../model/films';
+import { isError } from '../guards/isError';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  filmResource = resource({
-    loader: async () => {
-      const response = await fetch(environments.apiUrl);
+  isLoading = signal<boolean>(true);
+  isError = signal<boolean>(false);
+  films = signal<Films>([]);
+  errorMessage = signal<string>('');
+
+  constructor() {
+    try {
+      this.loadFilms();
+    } catch(error) {
+      this.handleError(error);
+    }
+  }
+
+  private async loadFilms() {
+    const response = await fetch(environments.apiUrl);
       
       if (!response.ok) {
         throw new Error ('Network error');
@@ -16,9 +29,21 @@ export class ApiService {
 
       const data = await response.json();
       
-      if (isFilms(data)) return data;
+      if (isFilms(data)) {
+        this.films.set(data);
+        this.isLoading.set(false);
+      }
 
       throw new Error('Invalid data type');
+  }
+
+  private handleError(error: unknown) {
+    this.isLoading.set(false);
+    this.isError.set(true);
+    if (isError(error)) {
+      this.errorMessage.set(error.message);
+    } else {
+      this.errorMessage.set('Unknown error');
     }
-  });
+  }
 }
