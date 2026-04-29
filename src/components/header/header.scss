@@ -2,10 +2,38 @@
 
 :host {
   background-color: $neutral;
-  height: 50px;
+  height: 75px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: $primary;
+  .navigation {
+    display: flex;
+    gap: 20px;
+    .link {
+      text-decoration: none;
+      color: $primary;
+      position: relative;
+      transition-duration: 0.25s;
+      font-size:25px;
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        width: 0;
+        height: 2px;
+        background-color: $primary;
+        transition-duration: 0.25s;
+      }
+      &:hover {
+        color: $primary-light;
+        &::after {
+          width: 100%;
+          background-color: $primary-light;
+        }
+      }
+    }
+  }
 }
