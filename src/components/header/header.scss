@@ -17,7 +17,7 @@
     gap: 20px;
     .link {
       text-decoration: none;
-      color: $primary;
+      color: $tertiary-light;
       position: relative;
       transition-duration: 0.25s;
       font-size:25px;
@@ -28,7 +28,7 @@
         bottom: -1px;
         width: 0;
         height: 2px;
-        background-color: $primary;
+        background-color: $tertiary-light;
         transition-duration: 0.25s;
       }
       &:hover {
@@ -40,8 +40,10 @@
       }
     }
     .active {
+      color: $primary;
       pointer-events: none;
       &::after {
+        background-color: $primary;
         width: 100%;
       }
     }
