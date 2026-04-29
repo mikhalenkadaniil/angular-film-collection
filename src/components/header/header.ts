@@ -1,5 +1,5 @@
 import { Component, input, signal } from '@angular/core';
-import { RouterLink } from "@angular/router";
+import { RouterLink, RouterLinkActive } from "@angular/router";
 
 export interface ILink {
   routerLink: string;
@@ -8,7 +8,7 @@ export interface ILink {
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })

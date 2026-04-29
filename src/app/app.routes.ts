@@ -6,6 +6,11 @@ import { About } from '../pages/about/about';
 export const routes: Routes = [
   {
     path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'home',
     component: Home,
   },
   {
@@ -16,11 +21,11 @@ export const routes: Routes = [
 
 export const links: ILink[] = [
   {
-    routerLink: `${routes[0].path}`,
+    routerLink: `${routes[1].path}`,
     title: "Home",
   },
   {
-    routerLink: `${routes[1].path}`,
+    routerLink: `${routes[2].path}`,
     title: "About",
   },
 ];
