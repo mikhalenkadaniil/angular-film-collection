@@ -1,0 +1,5 @@
+<nav>
+  @for(link of links(); track link.routerLink) {
+    <a [routerLink]="link.routerLink">{{ link.title }}</a>
+  }
+</nav>
