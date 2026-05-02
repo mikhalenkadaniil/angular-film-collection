@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { IOption, Sidebar } from '../../components/sidebar/sidebar';
 import { compass, star } from '../../assets/icons/icons';
 import { StoreService } from '../../services/store.service';
+import { Search } from '../../ui/search/search';
 
 const sections: IOption[] = [
   {
@@ -18,7 +19,7 @@ const sections: IOption[] = [
 
 @Component({
   selector: 'app-home',
-  imports: [Sidebar],
+  imports: [Sidebar, Search],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

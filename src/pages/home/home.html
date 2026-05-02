@@ -1,5 +1,8 @@
 <app-sidebar [options]="sections" (selectedEvent)="onSelect($event)"></app-sidebar>
 <main class="main">
+  <h2 class="h2">Explore the Cinematic Universe</h2>
+  <p class="p">Discover curated collections of timeless classics and modern masterpieces from around the globe.</p>
+  <app-search></app-search>
   @switch (selected()) {
     @case ('explore') {
       @for(film of store.films(); track film.id) {
