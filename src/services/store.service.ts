@@ -7,22 +7,27 @@ import { isError } from '../guards/is-error';
   providedIn: 'root',
 })
 export class StoreService {
-  private api = new ApiService();
-  isLoading = signal<boolean>(true);
-  isError = signal<boolean>(false);
-  films = signal<Films>([]);
-  favoritesFilms = computed(
+  readonly isError = computed(() => this._isError());
+  readonly isLoading = computed(() => this._isLoading())
+  readonly films = computed(() => [...this._films()]);
+  readonly favoritesFilms = computed(
     () => this.films()
-            .filter((film) => film.isFavorite)
+    .filter((film) => film.isFavorite)
   );
-  errorMessage = signal<string>('');
+  readonly errorMessage = computed(() => this._errorMessage());
+
+  private api = new ApiService();
+  private _errorMessage = signal<string>('');
+  private _films = signal<Films>([]);
+  private _isLoading = signal<boolean>(true);
+  private _isError = signal<boolean>(false);
   
   constructor() {
     this.loadFilms();
   }
 
   toggleFavorite(id: number) {
-    this.films.update((films) =>
+    this._films.update((films) =>
       films.map(film =>
         film.id === id
           ? { ...film, isFavorite: !film.isFavorite }
@@ -35,8 +40,8 @@ export class StoreService {
     try {
       const data = await this.api.loadData();
       if (isFilms(data)) {
-        this.films.set(data);
-        this.isLoading.set(false);
+        this._films.set(data);
+        this._isLoading.set(false);
       }
       throw new Error('Invalid data type');
     } catch (error: unknown) {
@@ -45,12 +50,12 @@ export class StoreService {
   }
 
   private handleError(error: unknown) {
-    this.isLoading.set(false);
-    this.isError.set(true);
+    this._isLoading.set(false);
+    this._isError.set(true);
     if (isError(error)) {
-      this.errorMessage.set(error.message);
+      this._errorMessage.set(error.message);
     } else {
-      this.errorMessage.set('Unknown error');
+      this._errorMessage.set('Unknown error');
     }
   }
 }
