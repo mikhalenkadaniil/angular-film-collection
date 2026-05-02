@@ -4,7 +4,7 @@ export function isFilms(value: unknown): value is Films {
   return Array.isArray(value) && value.every(isFilm);
 }
 
-interface IFilm {
+export interface IFilm {
   description: string;
   duration: number;
   genre: string;

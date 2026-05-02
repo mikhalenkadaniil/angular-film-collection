@@ -3,6 +3,7 @@ import { IOption, Sidebar } from '../../components/sidebar/sidebar';
 import { compass, star } from '../../assets/icons/icons';
 import { StoreService } from '../../services/store.service';
 import { Search } from '../../ui/search/search';
+import { FilmCard } from '../../components/film-card/film-card';
 
 const sections: IOption[] = [
   {
@@ -19,7 +20,7 @@ const sections: IOption[] = [
 
 @Component({
   selector: 'app-home',
-  imports: [Sidebar, Search],
+  imports: [Sidebar, Search, FilmCard],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
@@ -30,5 +31,13 @@ export class Home {
 
   protected onSelect(id: string) {
     this.selected.set(id);
+  }
+
+  onOpen (id: number) {
+    console.log(id, 'open');
+  }
+
+  onToggleFavorite(id: number) {
+    console.log(id, 'toggle')
   }
 }

@@ -3,12 +3,14 @@
   <h2 class="h2">Explore the Cinematic Universe</h2>
   <p class="p">Discover curated collections of timeless classics and modern masterpieces from around the globe.</p>
   <app-search></app-search>
-  @switch (selected()) {
-    @case ('explore') {
-      @for(film of store.films(); track film.id) {
-        <div>{{ film.title }}</div>
+  <div class="content">
+    @switch (selected()) {
+      @case ('explore') {
+        @for(film of store.films(); track film.id) {
+          <app-film-card [data]="film" (openEvent)="onOpen($event)" (toggleFavoriteEvent)="onToggleFavorite($event)"></app-film-card>
+        }
       }
-    }
-    @case ('favorites') {}
-    }
+      @case ('favorites') {}
+      }
+  </div>
 </main>
