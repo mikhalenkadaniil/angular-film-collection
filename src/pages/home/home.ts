@@ -38,6 +38,6 @@ export class Home {
   }
 
   onToggleFavorite(id: number) {
-    console.log(id, 'toggle')
+    this.store.toggleFavorite(id);
   }
 }

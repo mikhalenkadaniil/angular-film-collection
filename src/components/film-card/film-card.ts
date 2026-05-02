@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
 import { IFilm } from '../../model/films';
 import { Icon } from '../../ui/icon/icon';
 import { star } from '../../assets/icons/icons';
@@ -12,6 +12,7 @@ import { star } from '../../assets/icons/icons';
 export class FilmCard {
   data = input.required<IFilm>();
   protected icon = star;
+  protected iconStatus = computed(() => this.data().isFavorite ? 'active' : '')
   toggleFavoriteEvent = output<number>();
   openEvent = output<number>();
 

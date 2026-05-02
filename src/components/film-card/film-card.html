@@ -1,6 +1,6 @@
 <div class="card" (click)="open()">
   <img class="poster" [src]="data().posterUrl" alt="Poster">
-  <app-icon [svg]="icon" class="icon" (click)="toggleFavorite($event)"></app-icon>
+  <app-icon [svg]="icon" [class]="iconStatus()" class="icon" (click)="toggleFavorite($event)"></app-icon>
   <div class="shadow">
     <div class="data-wrapper">
       <div class="title">{{ data().title }}</div>

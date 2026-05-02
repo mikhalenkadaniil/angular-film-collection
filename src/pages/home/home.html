@@ -10,7 +10,11 @@
           <app-film-card [data]="film" (openEvent)="onOpen($event)" (toggleFavoriteEvent)="onToggleFavorite($event)"></app-film-card>
         }
       }
-      @case ('favorites') {}
+      @case ('favorites') {
+        @for(film of store.favoritesFilms(); track film.id) {
+          <app-film-card [data]="film" (openEvent)="onOpen($event)" (toggleFavoriteEvent)="onToggleFavorite($event)"></app-film-card>
+        }
+      }
       }
   </div>
 </main>

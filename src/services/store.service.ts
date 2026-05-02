@@ -21,6 +21,16 @@ export class StoreService {
     this.loadFilms();
   }
 
+  toggleFavorite(id: number) {
+    this.films.update((films) =>
+      films.map(film =>
+        film.id === id
+          ? { ...film, isFavorite: !film.isFavorite }
+          : film
+      )
+    );
+  }
+
   private async loadFilms() {
     try {
       const data = await this.api.loadData();
