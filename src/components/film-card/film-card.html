@@ -1,4 +1,11 @@
-<div class="card" (click)="open()">
+<div
+  class="card"
+  (click)="open()"
+  (keydown.enter)="open()"
+  (keydown.space)="open()"
+  tabindex="0"
+  role="button"
+>
   <img class="poster" [src]="data().posterUrl" alt="Poster">
   <app-icon [svg]="icon" [class]="iconStatus()" class="icon" (click)="toggleFavorite($event)"></app-icon>
   <div class="shadow">
