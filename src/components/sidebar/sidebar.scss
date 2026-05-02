@@ -10,29 +10,33 @@
   gap: 3px;
   .section {
     color: $tertiary-light;
+    stroke: $tertiary-light;
     height: 40px;
     display: flex;
     align-items: center;
+    gap: 5px;
     padding-left: 20px;
     transition-duration: 0.25s;
     cursor: pointer;
     .input {
       display: none;
     }
+    .icon {
+      width: 25px;
+      height: 25px;
+    }
     &:hover {
       color: $primary;
+      stroke: $primary;
       background-color: rgba($primary, 0.1);
       opacity: 50%;
     }
     &:has(.input:checked) {
       color: $primary;
+      stroke: $primary;
       background-color: rgba($primary, 0.1);
       border-right: 3px solid $primary;
       pointer-events: none;
-    }
-    .icon {
-      width: 30px;
-      height: 30px;
     }
   }
 }

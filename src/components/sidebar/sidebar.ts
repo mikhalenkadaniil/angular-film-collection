@@ -1,4 +1,5 @@
 import { Component, input, OnInit, Signal, signal } from '@angular/core';
+import { Icon } from '../../ui/icon/icon';
 
 export interface IOption {
   icon: string;
@@ -8,7 +9,7 @@ export interface IOption {
 
 @Component({
   selector: 'app-sidebar',
-  imports: [],
+  imports: [Icon],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss',
 })
