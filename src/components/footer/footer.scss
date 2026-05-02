@@ -1,4 +1,4 @@
-@import "../../styles/colors.scss";
+@import "../../assets/styles/colors.scss";
 
 :host {
   display: flex;
@@ -8,6 +8,7 @@
   padding-right: 10px;
   background-color: $neutral;
   color: $tertiary-light;
+  border-top: 1px solid $border;
   .link {
     text-decoration: none;
     color: $tertiary-light;

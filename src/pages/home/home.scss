@@ -1,3 +1,5 @@
+@import "../../assets/styles/colors.scss";
 :host {
   flex: 1;
+  background-color: $bg;
 }

@@ -1,4 +1,4 @@
-@import "../../styles/colors.scss";
+@import "../../assets/styles/colors.scss";
 
 :host {
   background-color: $neutral;
@@ -8,6 +8,7 @@
   align-items: center;
   justify-content: space-between;
   color: $primary;
+  border-bottom: 1px solid $border;
   h1 {
     margin-left: 10px;
   }

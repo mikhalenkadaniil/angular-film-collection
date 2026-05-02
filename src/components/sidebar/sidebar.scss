@@ -1,0 +1,10 @@
+@import "../../assets/styles/colors.scss";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 200px;
+  border-right: 1px solid $border;
+  background-color: $tertiary;
+}
