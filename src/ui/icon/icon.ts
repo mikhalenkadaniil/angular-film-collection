@@ -1,4 +1,4 @@
-import { Component, input, OnInit } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
@@ -9,7 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class Icon {
   svg = input.required<string>();
-  constructor(private sanitizer: DomSanitizer) {}
+  sanitizer = inject(DomSanitizer)
 
   protected getHTML(icon: string) {
     return this.sanitizer.bypassSecurityTrustHtml(icon);

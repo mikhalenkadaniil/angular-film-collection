@@ -1,7 +1,7 @@
-import { computed, inject, Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { ApiService } from './api.service';
 import { Films, isFilms } from '../model/films';
-import { isError } from '../guards/isError';
+import { isError } from '../guards/is-error';
 
 @Injectable({
   providedIn: 'root',

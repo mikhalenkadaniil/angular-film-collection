@@ -1,4 +1,4 @@
-import { Component, input, OnInit, output, Signal, signal } from '@angular/core';
+import { Component, input, OnInit, output, signal } from '@angular/core';
 import { Icon } from '../../ui/icon/icon';
 
 export interface IOption {
