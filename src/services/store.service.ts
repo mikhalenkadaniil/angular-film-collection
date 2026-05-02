@@ -9,14 +9,25 @@ import { isError } from '../guards/is-error';
 export class StoreService {
   readonly isError = computed(() => this._isError());
   readonly isLoading = computed(() => this._isLoading())
-  readonly films = computed(() => [...this._films()]);
+  readonly films = computed(() => 
+    [...this._films()]
+    .filter((film) => 
+      film.title
+      .toLocaleLowerCase()
+      .includes(this.searchingValue().toLowerCase())
+    ));
   readonly favoritesFilms = computed(
     () => this.films()
     .filter((film) => film.isFavorite)
-  );
+    .filter((film) => 
+      film.title
+      .toLocaleLowerCase()
+      .includes(this.searchingValue().toLowerCase())
+    ));
   readonly errorMessage = computed(() => this._errorMessage());
 
   private api = new ApiService();
+  private searchingValue = signal<string>('');
   private _errorMessage = signal<string>('');
   private _films = signal<Films>([]);
   private _isLoading = signal<boolean>(true);
@@ -34,6 +45,10 @@ export class StoreService {
           : film
       )
     );
+  }
+
+  search(value: string) {
+    this.searchingValue.set(value);
   }
 
   private async loadFilms() {

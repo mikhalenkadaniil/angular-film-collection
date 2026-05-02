@@ -2,7 +2,7 @@
 <main class="main">
   <h2 class="h2">Explore the Cinematic Universe</h2>
   <p class="p">Discover curated collections of timeless classics and modern masterpieces from around the globe.</p>
-  <app-search></app-search>
+  <app-search (valueEvent)="onSearch($event)"></app-search>
   <div class="content">
     @switch (selected()) {
       @case ('explore') {

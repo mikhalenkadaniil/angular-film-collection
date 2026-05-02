@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
 import { Icon } from '../icon/icon';
 import { loupe } from '../../assets/icons/icons';
 
@@ -10,4 +10,10 @@ import { loupe } from '../../assets/icons/icons';
 })
 export class Search {
   protected icon = loupe;
+  valueEvent = output<string>();
+
+  onInput(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.valueEvent.emit(input.value);
+  }
 }

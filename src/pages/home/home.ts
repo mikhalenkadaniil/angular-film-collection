@@ -40,4 +40,8 @@ export class Home {
   onToggleFavorite(id: number) {
     this.store.toggleFavorite(id);
   }
+
+  onSearch(value: string) {
+    this.store.search(value);
+  }
 }
