@@ -1,1 +1,11 @@
-<app-sidebar [options]="sections"></app-sidebar>
+<app-sidebar [options]="sections" (selectedEvent)="onSelect($event)"></app-sidebar>
+<main class="main">
+  @switch (selected()) {
+    @case ('explore') {
+      @for(film of store.films(); track film.id) {
+        <div>{{ film.title }}</div>
+      }
+    }
+    @case ('favorites') {}
+    }
+</main>

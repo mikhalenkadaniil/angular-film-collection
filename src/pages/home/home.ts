@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { IOption, Sidebar } from '../../components/sidebar/sidebar';
 import { compass, star } from '../../assets/icons/icons';
+import { StoreService } from '../../services/store.service';
 
 const sections: IOption[] = [
   {
@@ -22,5 +23,11 @@ const sections: IOption[] = [
   styleUrl: './home.scss',
 })
 export class Home {
-  sections = sections;
+  protected sections = sections;
+  protected selected = signal<string>(sections[0].id);
+  protected store = inject(StoreService);
+
+  protected onSelect(id: string) {
+    this.selected.set(id);
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, input, OnInit, Signal, signal } from '@angular/core';
+import { Component, input, OnInit, output, Signal, signal } from '@angular/core';
 import { Icon } from '../../ui/icon/icon';
 
 export interface IOption {
@@ -16,8 +16,14 @@ export interface IOption {
 export class Sidebar implements OnInit {
   options = input.required<IOption[]>();
   protected selected = signal('');
+  selectedEvent = output<string>();
 
   ngOnInit(): void {
     this.selected.set(this.options()[0].id);
+  }
+
+  protected onChange(id: string) {
+    this.selected.set(id);
+    this.selectedEvent.emit(id);
   }
 }

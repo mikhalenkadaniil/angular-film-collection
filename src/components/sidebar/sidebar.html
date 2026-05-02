@@ -6,6 +6,7 @@
       [value]="option.id"
       [checked]="selected() === option.id"
       [id]="option.id"
+      (change)="onChange(option.id)"
       class="input"
     >
     <app-icon class="icon" [svg]="option.icon"></app-icon>

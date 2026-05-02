@@ -2,4 +2,8 @@
 :host {
   flex: 1;
   background-color: $bg;
+  display: flex;
+  .main {
+    width: 100%;
+  }
 }
