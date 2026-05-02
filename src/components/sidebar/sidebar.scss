@@ -7,4 +7,32 @@
   width: 200px;
   border-right: 1px solid $border;
   background-color: $tertiary;
+  gap: 3px;
+  .section {
+    color: $tertiary-light;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    transition-duration: 0.25s;
+    cursor: pointer;
+    .input {
+      display: none;
+    }
+    &:hover {
+      color: $primary;
+      background-color: rgba($primary, 0.1);
+      opacity: 50%;
+    }
+    &:has(.input:checked) {
+      color: $primary;
+      background-color: rgba($primary, 0.1);
+      border-right: 3px solid $primary;
+      pointer-events: none;
+    }
+    .icon {
+      width: 30px;
+      height: 30px;
+    }
+  }
 }

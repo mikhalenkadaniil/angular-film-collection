@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, input, OnInit, Signal, signal } from '@angular/core';
+
+export interface IOption {
+  icon: string;
+  label: string;
+  id: string;
+}
 
 @Component({
   selector: 'app-sidebar',
@@ -6,6 +12,11 @@ import { Component } from '@angular/core';
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss',
 })
-export class Sidebar {
+export class Sidebar implements OnInit {
+  options = input.required<IOption[]>();
+  protected selected = signal('');
 
+  ngOnInit(): void {
+    this.selected.set(this.options()[0].id);
+  }
 }
