@@ -4,6 +4,7 @@ import { FilmList } from '../components/film-list/film-list';
 import { About } from '../pages/about/about';
 import { Home } from '../pages/home/home';
 import { FilmDetails } from '../components/film-details/film-details';
+import { NotFound } from '../components/not-found/not-found';
 
 export const routes: Routes = [
   {
@@ -33,6 +34,9 @@ export const routes: Routes = [
   {
     path: 'about',
     component: About,
+  }, {
+    path: '**',
+    component: NotFound,
   }
 ];
 
