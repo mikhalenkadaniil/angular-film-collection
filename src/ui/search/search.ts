@@ -1,7 +1,7 @@
 import { Component, output } from '@angular/core';
 import { Icon } from '../icon/icon';
 import { loupe } from '../../assets/icons/icons';
-import { AutoFocus } from "../../app/auto-focus";
+import { AutoFocus } from "../../directives/auto-focus";
 
 @Component({
   selector: 'app-search',
