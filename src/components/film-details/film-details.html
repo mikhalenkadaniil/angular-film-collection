@@ -1,1 +1,32 @@
-<p>film-details works!</p>
+@if(this.store.isLoading()) {
+  <div>Loading...</div>
+} @else {
+  <div class="details-wrapper">
+    <img [src]="data().posterUrl" alt="Poster">
+    <div class="meta-wrapper">
+      <div class="title-wrapper">
+        <div class="title">{{ data().title }}</div>
+        <div class="genre">{{ data().genre }}</div>
+      </div>
+      <div class="synopsis-wrapper">
+        <h2 class="h2">Synopsis</h2>
+        <div class="description">{{ data().description }}</div>
+        <div class="stats-wrapper">
+          <div class="column">
+            <h3 class="h3">Year</h3>
+            <div>{{ data().year }}</div>
+          </div>
+          <div class="column">
+            <h3 class="h3">Rating</h3>
+            <div>{{ data().rating }}/10</div>
+          </div>
+          <div class="column">
+            <h3 class="h3">Duration</h3>
+            <div>{{ data().duration }}</div>
+          </div>
+        </div>
+      </div>
+      <a routerLink="/home" class="back-link">Back to catalog</a>
+    </div>
+  </div>
+}

@@ -1,6 +1,6 @@
-import { computed, Injectable, signal } from '@angular/core';
+import { computed, Injectable, Signal, signal } from '@angular/core';
 import { ApiService } from './api.service';
-import { Films, isFilms } from '../model/films';
+import { Films, IFilm, isFilms } from '../model/films';
 import { isError } from '../guards/is-error';
 
 @Injectable({
@@ -50,6 +50,11 @@ export class StoreService {
 
   search(value: string) {
     this._searchingValue.set(value);
+  }
+
+  getFilm(id: number): Signal<IFilm> {
+    const film = computed(() => this._films().find(film => film.id === id)!);
+    return film;
   }
 
   private async loadFilms() {
