@@ -4,10 +4,11 @@ import { StoreService } from '../../services/store.service';
 import { IFilm } from '../../model/films';
 import { HumanReadableDurationPipe } from '../../pipes/human-readable-duration.pipe';
 import { NotFound } from '../not-found/not-found';
+import { Breadcrumbs } from '../breadcrumbs/breadcrumbs';
 
 @Component({
   selector: 'app-film-details',
-  imports: [RouterLink, HumanReadableDurationPipe, NotFound],
+  imports: [RouterLink, HumanReadableDurationPipe, NotFound, Breadcrumbs],
   templateUrl: './film-details.html',
   styleUrl: './film-details.scss',
 })

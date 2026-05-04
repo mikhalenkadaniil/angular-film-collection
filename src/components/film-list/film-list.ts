@@ -5,6 +5,7 @@ import { StoreService } from '../../services/store.service';
 import { Search } from '../../ui/search/search';
 import { FilmCard } from '../film-card/film-card';
 import { Router } from '@angular/router';
+import { Breadcrumbs } from "../breadcrumbs/breadcrumbs";
 
 const sections: IOption[] = [
   {
@@ -21,7 +22,7 @@ const sections: IOption[] = [
 
 @Component({
   selector: 'app-film-list',
-  imports: [Sidebar, Search, FilmCard],
+  imports: [Sidebar, Search, FilmCard, Breadcrumbs],
   templateUrl: './film-list.html',
   styleUrl: './film-list.scss',
 })

@@ -1,0 +1,8 @@
+@for (breadcrumb of breadcrumbs(); track breadcrumb.url) {
+  @if (breadcrumb.isLast) {
+    <div class="current">{{ breadcrumb.label }}</div>
+  } @else {
+    <a class="link" [routerLink]="breadcrumb.url">{{ breadcrumb.label }}</a>
+    <div class="icon">{{">"}}</div>
+  }
+}
