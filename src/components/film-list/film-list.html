@@ -1,0 +1,32 @@
+<app-sidebar [options]="sections" (selectedEvent)="onSelect($event)"></app-sidebar>
+<main class="main">
+  <h2 class="h2">Explore the Cinematic Universe</h2>
+  <p class="p">Discover curated collections of timeless classics and modern masterpieces from around the globe.</p>
+  <app-search (valueEvent)="onSearch($event)"></app-search>
+  <div class="content">
+    @switch (selected()) {
+      @case ('explore') {
+        @if (store.films().length) {
+          @for(film of store.films(); track film.id) {
+            <app-film-card [data]="film" (openEvent)="onOpen($event)" (toggleFavoriteEvent)="onToggleFavorite($event)"></app-film-card>
+          }
+        } @else {
+          <div>"{{ store.searchingValue() }}" not found</div>
+        }
+      }
+      @case ('favorites') {
+        @if (store.favoritesFilms().length) {
+          @for(film of store.favoritesFilms(); track film.id) {
+            <app-film-card [data]="film" (openEvent)="onOpen($event)" (toggleFavoriteEvent)="onToggleFavorite($event)"></app-film-card>
+          }
+        } @else {
+          @if (store.searchingValue().length) {
+            <div>"{{ store.searchingValue() }}" not found</div>
+          } @else {
+            <div>There's nothing here yet.</div>
+          }
+        }
+      }
+      }
+  </div>
+</main>
