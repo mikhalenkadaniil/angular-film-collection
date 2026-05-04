@@ -2,10 +2,11 @@ import { Component, inject, OnInit, Signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { StoreService } from '../../services/store.service';
 import { IFilm } from '../../model/films';
+import { HumanReadableDurationPipe } from '../../pipes/human-readable-duration-pipe';
 
 @Component({
   selector: 'app-film-details',
-  imports: [RouterLink],
+  imports: [RouterLink, HumanReadableDurationPipe],
   templateUrl: './film-details.html',
   styleUrl: './film-details.scss',
 })
