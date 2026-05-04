@@ -14,7 +14,7 @@ export class StoreService {
     .filter((film) => 
       film.title
       .toLocaleLowerCase()
-      .includes(this.searchingValue().toLowerCase())
+      .includes(this._searchingValue().toLowerCase())
     ));
   readonly favoritesFilms = computed(
     () => this.films()
@@ -22,12 +22,13 @@ export class StoreService {
     .filter((film) => 
       film.title
       .toLocaleLowerCase()
-      .includes(this.searchingValue().toLowerCase())
+      .includes(this._searchingValue().toLowerCase())
     ));
   readonly errorMessage = computed(() => this._errorMessage());
+  readonly searchingValue = computed(() => this._searchingValue());
 
   private api = new ApiService();
-  private searchingValue = signal<string>('');
+  private _searchingValue = signal<string>('');
   private _errorMessage = signal<string>('');
   private _films = signal<Films>([]);
   private _isLoading = signal<boolean>(true);
@@ -48,7 +49,7 @@ export class StoreService {
   }
 
   search(value: string) {
-    this.searchingValue.set(value);
+    this._searchingValue.set(value);
   }
 
   private async loadFilms() {

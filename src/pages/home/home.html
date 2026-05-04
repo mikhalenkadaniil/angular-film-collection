@@ -6,13 +6,25 @@
   <div class="content">
     @switch (selected()) {
       @case ('explore') {
-        @for(film of store.films(); track film.id) {
-          <app-film-card [data]="film" (openEvent)="onOpen($event)" (toggleFavoriteEvent)="onToggleFavorite($event)"></app-film-card>
+        @if (store.films().length) {
+          @for(film of store.films(); track film.id) {
+            <app-film-card [data]="film" (openEvent)="onOpen($event)" (toggleFavoriteEvent)="onToggleFavorite($event)"></app-film-card>
+          }
+        } @else {
+          <div>"{{ store.searchingValue() }}" not found</div>
         }
       }
       @case ('favorites') {
-        @for(film of store.favoritesFilms(); track film.id) {
-          <app-film-card [data]="film" (openEvent)="onOpen($event)" (toggleFavoriteEvent)="onToggleFavorite($event)"></app-film-card>
+        @if (store.favoritesFilms().length) {
+          @for(film of store.favoritesFilms(); track film.id) {
+            <app-film-card [data]="film" (openEvent)="onOpen($event)" (toggleFavoriteEvent)="onToggleFavorite($event)"></app-film-card>
+          }
+        } @else {
+          @if (store.searchingValue().length) {
+            <div>"{{ store.searchingValue() }}" not found</div>
+          } @else {
+            <div>There's nothing here yet.</div>
+          }
         }
       }
       }
