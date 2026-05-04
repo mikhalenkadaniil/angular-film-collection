@@ -10,7 +10,14 @@
   height: 100%;
 }
 
-.details-wrapper {
+.breadcrumbs-wrapper {
+  width: 100%;
+}
+.breadcrumbs {
+  align-self: flex-start;
+}
+
+.details-wrapper, .breadcrumbs-wrapper {
   max-width: 1000px;
   margin-left: 40px;
   margin-right: 40px;
