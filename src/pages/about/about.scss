@@ -1,3 +1,26 @@
+@import "../../assets/styles/colors.scss";
 :host {
   flex: 1;
+}
+
+.content-wrapper {
+  display: flex;
+  margin-left: 25px;
+  margin-right: 25px;
+  gap: 25px;
+}
+
+.title {
+  color: white;
+  font-size: 40px;
+}
+
+.highlight {
+  color: $primary;
+}
+
+.description {
+  color: $primary-dark;
+  width: 70%;
+  font-size: 20px;
 }
