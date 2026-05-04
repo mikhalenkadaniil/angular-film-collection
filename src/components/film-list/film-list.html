@@ -11,7 +11,11 @@
             <app-film-card [data]="film" (openEvent)="onOpen($event)" (toggleFavoriteEvent)="onToggleFavorite($event)"></app-film-card>
           }
         } @else {
-          <div>"{{ store.searchingValue() }}" not found</div>
+          @if (store.searchingValue().length) {
+            <div>"{{ store.searchingValue() }}" not found</div>
+          } @else {
+            <div>There's nothing here yet.</div>
+          }
         }
       }
       @case ('favorites') {
