@@ -18,8 +18,13 @@
   }
 }
 
-.icon, .current {
+.icon {
   color: $primary;
+}
+.current {
+  color: $primary-light;
+}
+.icon, .current {
   pointer-events: none;
 }
 
