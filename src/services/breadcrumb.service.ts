@@ -18,13 +18,17 @@ export class BreadcrumbService {
   readonly breadcrumbs = this._breadcrumbs.asReadonly();
 
   constructor() {
+    this.updateBreadcrumbs();
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        const breadcrumbs = this.build(this.route.root);
-        console.log(breadcrumbs)
-        this._breadcrumbs.set(breadcrumbs);
+        this.updateBreadcrumbs();
       }
     });
+  }
+
+  private updateBreadcrumbs() {
+    const breadcrumbs = this.build(this.route.root);
+    this._breadcrumbs.set(breadcrumbs);
   }
   
   private build(route: ActivatedRoute, url = '', acc: IBreadcrumb[] = []): IBreadcrumb[] {
