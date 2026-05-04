@@ -3,10 +3,11 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { StoreService } from '../../services/store.service';
 import { IFilm } from '../../model/films';
 import { HumanReadableDurationPipe } from '../../pipes/human-readable-duration.pipe';
+import { NotFound } from '../not-found/not-found';
 
 @Component({
   selector: 'app-film-details',
-  imports: [RouterLink, HumanReadableDurationPipe],
+  imports: [RouterLink, HumanReadableDurationPipe, NotFound],
   templateUrl: './film-details.html',
   styleUrl: './film-details.scss',
 })
