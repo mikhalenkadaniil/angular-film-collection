@@ -15,6 +15,9 @@ export const routes: Routes = [
   {
     path: 'home',
     component: Home,
+    data: {
+      breadcrumb: 'Home'
+    },
     children: [
       {
         path: '',
@@ -28,12 +31,18 @@ export const routes: Routes = [
       {
         path: 'details/:id',
         component: FilmDetails,
+        data: {
+          breadcrumb: 'Film title'
+        },
       }
     ],
   },
   {
     path: 'about',
     component: About,
+    data: {
+      breadcrumb: 'About'
+    },
   }, {
     path: '**',
     component: NotFound,
