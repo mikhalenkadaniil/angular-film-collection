@@ -9,7 +9,7 @@ export interface IBreadcrumb {
 @Injectable({
   providedIn: 'root',
 })
-export class Breadcrumb {
+export class BreadcrumbService {
 
   private router = inject(Router);
   private route = inject(ActivatedRoute);
