@@ -11,7 +11,7 @@ import { RouterLink } from "@angular/router";
 export class Breadcrumbs {
   private breadcrumbService = inject(BreadcrumbService);
   protected breadcrumbs = computed(() => {
-    if (!this.breadcrumbService.breadcrumbs().length) return [];
+    if (this.breadcrumbService.breadcrumbs().length === 0) return [];
     const breadcrumbs = this.breadcrumbService.breadcrumbs()
       .map((breadcrumb) => Object.assign(breadcrumb, { isLast: false }));
     const last = this.breadcrumbService.breadcrumbs().length - 1;

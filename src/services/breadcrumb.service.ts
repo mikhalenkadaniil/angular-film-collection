@@ -31,10 +31,10 @@ export class BreadcrumbService {
     this._breadcrumbs.set(breadcrumbs);
   }
   
-  private build(route: ActivatedRoute, url = '', acc: IBreadcrumb[] = []): IBreadcrumb[] {
+  private build(route: ActivatedRoute, url = '', accumulator: IBreadcrumb[] = []): IBreadcrumb[] {
     const children = route.children;
     
-    if (!children.length) return acc;
+    if (children.length === 0) return accumulator;
 
     for (const child of children) {
       const segment = child.snapshot.url.map(s => s.path).join('/');
@@ -45,12 +45,12 @@ export class BreadcrumbService {
       const label = child.snapshot.data?.['breadcrumb'];
 
       if (label) {
-        acc.push({ label, url });
+        accumulator.push({ label, url });
       }
       
-      return this.build(child, url, acc);
+      return this.build(child, url, accumulator);
     }
     
-    return acc;
+    return accumulator;
   }
 }
