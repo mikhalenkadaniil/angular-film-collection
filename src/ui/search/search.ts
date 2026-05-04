@@ -1,10 +1,11 @@
 import { Component, output } from '@angular/core';
 import { Icon } from '../icon/icon';
 import { loupe } from '../../assets/icons/icons';
+import { AutoFocus } from "../../app/auto-focus";
 
 @Component({
   selector: 'app-search',
-  imports: [Icon],
+  imports: [Icon, AutoFocus],
   templateUrl: './search.html',
   styleUrl: './search.scss',
 })
